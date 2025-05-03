@@ -9,6 +9,6 @@ public class InteractiveItem : InteractiveObject
 
     public override void OnInteract()
     {
-
+        Debug.Log("Interacted with " + gameObject.name);
     }
 }
