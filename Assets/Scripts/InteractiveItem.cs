@@ -1,14 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractiveItem : InteractiveObject
 {
-    [Header("Item Settings")]
-    [SerializeField] private Sprite inventorySprite;
-    
-    public Sprite InventorySprite => inventorySprite;
-
     public override void OnInteract()
     {
         Debug.Log("Interacted with " + gameObject.name);
+        // Also call the base class method if needed
+        base.OnInteract();
     }
 }

@@ -26,7 +26,8 @@ public class InteractiveObject : MonoBehaviour, IPointerClickHandler, IPointerEn
     [SerializeField] protected UnityEvent onExitEvent;
 
     // Optional component references
-    protected SpriteRenderer spriteRenderer;
+    [Header("Optional References")]
+    [SerializeField] protected SpriteRenderer spriteRenderer;
     protected Color originalColor;
 
     // State tracking
@@ -34,10 +35,17 @@ public class InteractiveObject : MonoBehaviour, IPointerClickHandler, IPointerEn
     
     protected virtual void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
         if (spriteRenderer != null)
         {
             originalColor = spriteRenderer.color;
+        } else
+        {
+            Debug.LogWarning("SpriteRenderer not found on " + gameObject.name);
         }
     }
 
@@ -76,7 +84,7 @@ public class InteractiveObject : MonoBehaviour, IPointerClickHandler, IPointerEn
         {
             GameManager.Instance.UIManager.HideInteractionText();
         }
-        
+
         onExitEvent?.Invoke();
     }
 

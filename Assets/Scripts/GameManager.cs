@@ -1,16 +1,5 @@
 using UnityEngine;
 
-public enum GameState
-{
-    MainMenu,
-    Playing,
-    Paused,
-    Dialogue,
-    Cutscene,
-    GameOver
-}
-
-
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
@@ -33,19 +22,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject eventSystemPrefab;
     
-    [Header("Game State")]
-    [SerializeField] private GameState currentState;
     
     private void Awake()
     {
         if (_instance != null && _instance != this)
         {
+            Debug.LogError("Multiple GameManager instances found. Destroying this instance. This will likely cause issues.");
             Destroy(gameObject);
             return;
         }
         
         _instance = this;
-        DontDestroyOnLoad(gameObject);
         
         // Initialize subsystems if not set
         if (UIManager == null) UIManager = GetComponentInChildren<UIManager>();
@@ -57,16 +44,5 @@ public class GameManager : MonoBehaviour
             var eventSystem = Instantiate(eventSystemPrefab);
             eventSystem.name = "EventSystem";
         }
-    }
-    
-    public void ChangeState(GameState newState)
-    {
-        currentState = newState;
-        GameEvents.TriggerGameStateChanged(newState);
-    }
-    
-    public bool IsState(GameState state)
-    {
-        return currentState == state;
     }
 }

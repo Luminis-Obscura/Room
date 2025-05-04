@@ -26,11 +26,4 @@ public static class GameEvents
     {
         OnSceneChange?.Invoke(sceneName);
     }
-    
-    // Game state events
-    public static event System.Action<GameState> OnGameStateChanged;
-    public static void TriggerGameStateChanged(GameState newState)
-    {
-        OnGameStateChanged?.Invoke(newState);
-    }
 }
