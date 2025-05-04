@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     [Header("Managers")]
     public UIManager UIManager;
     public SceneController SceneController;
+
+    [SerializeField]
+    private GameObject eventSystemPrefab;
     
     [Header("Game State")]
     [SerializeField] private GameState currentState;
@@ -47,6 +50,13 @@ public class GameManager : MonoBehaviour
         // Initialize subsystems if not set
         if (UIManager == null) UIManager = GetComponentInChildren<UIManager>();
         if (SceneController == null) SceneController = GetComponentInChildren<SceneController>();
+
+        // Check if EventSystem already exists
+        if (FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>() == null)
+        {
+            var eventSystem = Instantiate(eventSystemPrefab);
+            eventSystem.name = "EventSystem";
+        }
     }
     
     public void ChangeState(GameState newState)
