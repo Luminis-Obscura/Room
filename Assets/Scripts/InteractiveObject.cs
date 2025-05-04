@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
@@ -56,7 +57,10 @@ public class InteractiveObject : MonoBehaviour, IPointerClickHandler, IPointerEn
             spriteRenderer.color = new Color(originalColor.r * 1.2f, originalColor.g * 1.2f, originalColor.b * 1.2f);
         }
         
-        GameManager.Instance.UIManager.ShowInteractionText(interactionText);
+        if (GameManager.Instance.UIManager != null)
+        {
+            GameManager.Instance.UIManager.ShowInteractionText(interactionText);
+        }
         onEnterEvent?.Invoke();
     }
 
@@ -68,7 +72,11 @@ public class InteractiveObject : MonoBehaviour, IPointerClickHandler, IPointerEn
             spriteRenderer.color = originalColor;
         }
         
-        GameManager.Instance.UIManager.HideInteractionText();
+        if (GameManager.Instance.UIManager != null)
+        {
+            GameManager.Instance.UIManager.HideInteractionText();
+        }
+        
         onExitEvent?.Invoke();
     }
 
