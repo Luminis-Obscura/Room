@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cateye.unity
     guid: d0a67aeb5909a4ca28e5848df7462ffc
+  - enabled: 1
+    path: Assets/Scenes/WasteBin.unity
+    guid: 9dc55ec2e402d44a3806bfae769c8eb3
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

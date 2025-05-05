@@ -1682,7 +1682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7681486414863946070, guid: f1d671e1ebef84eb3a4a55e71839e9ed, type: 3}
       propertyPath: m_Name
-      value: Generator
+      value: CarGenerator
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

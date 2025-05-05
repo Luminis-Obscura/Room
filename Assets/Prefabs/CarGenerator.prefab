@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1839533854405221739}
   - component: {fileID: 7095767365552810282}
   m_Layer: 0
-  m_Name: Generator
+  m_Name: CarGenerator
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
