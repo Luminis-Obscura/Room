@@ -16,15 +16,25 @@ public class BackgroundManager : MonoBehaviour
             Debug.LogError("No backgrounds assigned to BackgroundManager on " + gameObject.name);
             return;
         }
-        // Radomly select a background from the array to be active deacivate all others
+    }
+
+    public void RandomizeBackground()
+    {
+        // Deactivate the current background
+        if (currentBackground != null) currentBackground.gameObject.SetActive(false);
+        
+        // Randomly select a new background
         int randomIndex = Random.Range(0, backgrounds.Length);
-        for (int i = 0; i < backgrounds.Length; i++)
+        while (backgrounds[randomIndex] == currentBackground)
         {
-            backgrounds[i].gameObject.SetActive(i == randomIndex);
+            randomIndex = Random.Range(0, backgrounds.Length);
         }
         
+        // Activate the new background
         currentBackground = backgrounds[randomIndex];
-        // interactiveItem.spriteRenderer = currentBackground;
+        currentBackground.gameObject.SetActive(true);
+        
+        // Update the interactive item sprite renderer
         interactiveItem.SetSpriteRenderer(currentBackground);
     }
 }
