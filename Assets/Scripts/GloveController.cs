@@ -86,11 +86,11 @@ public class GloveController : InteractiveObject
         Debug.Log($"Glove state changed to: {CurrentState}");
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!IsMouseOpen && CurrentState != GloveState.Dead)
+        if (collision.CompareTag("Opponent") && CurrentState != GloveState.Dead && !IsMouseOpen)
         {
-            Debug.Log("Mouse is not open");
+            // Example of taking damage from an opponent
             TakeDamage(1);
         }
     }
