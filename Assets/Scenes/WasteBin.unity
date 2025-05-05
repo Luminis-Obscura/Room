@@ -709,6 +709,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: WasteGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 7059741773180540592, guid: 285304a3098734f8f9a550426e00edfb, type: 3}
+      propertyPath: prefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059741773180540592, guid: 285304a3098734f8f9a550426e00edfb, type: 3}
+      propertyPath: 'prefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1973993474802743250, guid: 2176673155729497bb2d22993204530a, type: 3}
+    - target: {fileID: 7059741773180540592, guid: 285304a3098734f8f9a550426e00edfb, type: 3}
+      propertyPath: 'prefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2602039882670714995, guid: 2e6d7a7331b914ad8865b7eac2f60af3, type: 3}
+    - target: {fileID: 7059741773180540592, guid: 285304a3098734f8f9a550426e00edfb, type: 3}
+      propertyPath: 'prefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 5090699035333700986, guid: 6425d50a2c1e94e4c84e676de9ee73f4, type: 3}
     - target: {fileID: 8359823418309819837, guid: 285304a3098734f8f9a550426e00edfb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.41
