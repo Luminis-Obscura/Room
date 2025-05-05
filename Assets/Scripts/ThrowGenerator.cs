@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WasteGenerator : MonoBehaviour
+public class ThrowGenerator : MonoBehaviour
 {
     [Header("Spawn Settings")]
-    [SerializeField] private List<GameObject> wastePrefabs;
+    [SerializeField] private List<GameObject> prefabs;
     [SerializeField] private float baseForce = 5f;
     [SerializeField] private float maxForceMultiplier = 2f;
     
@@ -29,7 +29,7 @@ public class WasteGenerator : MonoBehaviour
     {
         if (CanSpawn() && Input.GetMouseButtonDown(0))
         {
-            SpawnWaste();
+            SpawnPrefab();
             _nextSpawnTime = Time.time + cooldownDuration;
         }
 
@@ -44,38 +44,33 @@ public class WasteGenerator : MonoBehaviour
         return Time.time >= _nextSpawnTime;
     }
 
-    private void SpawnWaste()
+    private void SpawnPrefab()
     {
-        if (wastePrefabs == null || wastePrefabs.Count == 0)
+        if (prefabs == null || prefabs.Count == 0)
         {
-            Debug.LogError("[WasteGenerator] Waste prefabs list is empty or not assigned.");
+            Debug.LogError("[ThrowGenerator] prefabs list is empty or not assigned.");
             return;
         }
 
-        // Get mouse position in world space
         Vector3 mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0; // Ensure we're in 2D space
 
-        // Spawn at transform position
         Vector3 spawnPosition = transform.position;
         
-        // Calculate direction towards mouse
         Vector2 direction = (mousePosition - spawnPosition).normalized;
         
-        // Spawn the waste object
-        int randomIndex = Random.Range(0, wastePrefabs.Count);
-        GameObject wasteObject = Instantiate(wastePrefabs[randomIndex], spawnPosition, Quaternion.identity);
+        int randomIndex = Random.Range(0, prefabs.Count);
+        GameObject spawnObject = Instantiate(prefabs[randomIndex], spawnPosition, Quaternion.identity);
         
-        if (wasteObject.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
+        if (spawnObject.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb))
         {
-            // Calculate force with random multiplier
             float forceMultiplier = Random.Range(1f, maxForceMultiplier);
             rb.AddForce(direction * baseForce * forceMultiplier, ForceMode2D.Impulse);
         }
         else 
         {
-            Debug.LogError("[WasteGenerator] Waste prefab missing Rigidbody2D component!");
-            Destroy(wasteObject);
+            Debug.LogError("[ThrowGenerator] prefab missing Rigidbody2D component!");
+            Destroy(spawnObject);
         }
     }
 
