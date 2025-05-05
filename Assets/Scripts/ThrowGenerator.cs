@@ -27,7 +27,7 @@ public class ThrowGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (CanSpawn() && Input.GetMouseButtonDown(0))
+        if (CanSpawn() && Input.GetMouseButtonDown(0) && !IsMouseOverInteractiveObject())
         {
             SpawnPrefab();
             _nextSpawnTime = Time.time + cooldownDuration;
@@ -37,6 +37,21 @@ public class ThrowGenerator : MonoBehaviour
         {
             Debug.Log($"Cooldown: {_nextSpawnTime - Time.time:F2}s remaining");
         }
+    }
+
+    private bool IsMouseOverInteractiveObject()
+    {
+        // Get the object under the mouse cursor using Physics2D.Raycast
+        Vector2 mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+        if (hit.collider != null)
+        {
+            // Check if the hit object has an InteractiveObject component
+            return hit.collider.GetComponent<InteractiveObject>() != null;
+        }
+
+        return false;
     }
 
     private bool CanSpawn()

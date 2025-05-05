@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -10,6 +9,7 @@ public interface IInteractable
     void OnInteract();
     bool CanInteract();
     string GetInteractionText();
+    void OnStopInteract();
 }
 
 // Base class for all clickable objects in the game
@@ -102,6 +102,19 @@ public class InteractiveObject : MonoBehaviour, IPointerClickHandler, IPointerEn
     public virtual string GetInteractionText()
     {
         return interactionText;
+    }
+
+    public virtual void OnStopInteract()
+    {
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = originalColor;
+        }
+        
+        if (GameManager.Instance.UIManager != null)
+        {
+            GameManager.Instance.UIManager.HideInteractionText();
+        }
     }
 
     public virtual void SetInteractable(bool state)
