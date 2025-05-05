@@ -9,16 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/DinasourMiniGame.unity
+    path: Assets/Scenes/MiniGames/DinasourMiniGame.unity
     guid: 24f8417d64759421da0745cf61e85bb8
   - enabled: 1
-    path: Assets/Scenes/Cateye.unity
+    path: Assets/Scenes/MiniGames/Cateye.unity
     guid: d0a67aeb5909a4ca28e5848df7462ffc
   - enabled: 1
-    path: Assets/Scenes/WasteBin.unity
+    path: Assets/Scenes/MiniGames/WasteBin.unity
     guid: 9dc55ec2e402d44a3806bfae769c8eb3
   - enabled: 1
-    path: Assets/Scenes/Block.unity
+    path: Assets/Scenes/MiniGames/Block.unity
     guid: fe80562954e6745028e9943da0f26f56
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
