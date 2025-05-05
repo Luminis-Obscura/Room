@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 726057547430183921}
   - component: {fileID: 3386925957078924613}
   - component: {fileID: 717338656467692465}
+  - component: {fileID: 7281743766941420697}
   m_Layer: 0
   m_Name: Type6
   m_TagString: Untagged
@@ -200,3 +201,16 @@ MonoBehaviour:
       m_Calls: []
   spriteRenderer: {fileID: 0}
   dragSpeed: 10
+--- !u!114 &7281743766941420697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5177966009823050086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84da4323f60294eb4984c617bbca0d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: -100

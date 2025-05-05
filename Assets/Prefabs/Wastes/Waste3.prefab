@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 121979521003266059}
   - component: {fileID: 384367732192827310}
   - component: {fileID: 8583367278724484096}
+  - component: {fileID: 5354622262800226793}
   m_Layer: 0
   m_Name: Waste3
   m_TagString: Untagged
@@ -152,3 +153,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5354622262800226793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5090699035333700986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84da4323f60294eb4984c617bbca0d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor: -100
