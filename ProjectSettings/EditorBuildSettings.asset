@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/MiniGames/DinasourMiniGame.unity
+    path: Assets/Scenes/MiniGames/Dinasour.unity
     guid: 24f8417d64759421da0745cf61e85bb8
   - enabled: 1
     path: Assets/Scenes/MiniGames/Cateye.unity
@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniGames/Block.unity
     guid: fe80562954e6745028e9943da0f26f56
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/Shout.unity
+    guid: 5d6299249bcc447ddb7df486fc84134b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
