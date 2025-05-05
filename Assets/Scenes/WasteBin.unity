@@ -710,6 +710,10 @@ PrefabInstance:
       value: WasteGenerator
       objectReference: {fileID: 0}
     - target: {fileID: 7059741773180540592, guid: 285304a3098734f8f9a550426e00edfb, type: 3}
+      propertyPath: baseForce
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059741773180540592, guid: 285304a3098734f8f9a550426e00edfb, type: 3}
       propertyPath: prefabs.Array.size
       value: 3
       objectReference: {fileID: 0}
