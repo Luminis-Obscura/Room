@@ -113,4 +113,17 @@ public class InteractiveObject : MonoBehaviour, IPointerClickHandler, IPointerEn
             GameManager.Instance.UIManager.HideInteractionText();
         }
     }
+
+    public void SetSpriteRenderer(SpriteRenderer newSprite)
+    {
+        if (newSprite != null)
+        {
+            spriteRenderer = newSprite;
+            originalColor = spriteRenderer.color;
+        }
+        else
+        {
+            Debug.LogWarning("New SpriteRenderer is null");
+        }
+    }
 }

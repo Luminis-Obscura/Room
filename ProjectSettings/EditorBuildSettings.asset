@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DinasourMiniGame.unity
     guid: 24f8417d64759421da0745cf61e85bb8
+  - enabled: 1
+    path: Assets/Scenes/Cateye.unity
+    guid: d0a67aeb5909a4ca28e5848df7462ffc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
