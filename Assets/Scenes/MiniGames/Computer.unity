@@ -1100,8 +1100,8 @@ Transform:
   m_GameObject: {fileID: 1308275614}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.471429, y: -1.9499999, z: 0}
-  m_LocalScale: {x: 1, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: 3.97, y: 0.12, z: 0}
+  m_LocalScale: {x: 1.6894, y: 1.18258, z: 1.18258}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1748737311}
@@ -1450,6 +1450,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1907210022}
   - component: {fileID: 1907210021}
+  - component: {fileID: 1907210024}
+  - component: {fileID: 1907210023}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: Untagged
@@ -1527,6 +1529,89 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1907210023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907210020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f32e43bd0ece4aecbac9660a1726d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionText: Interact
+  isInteractable: 1
+  highlightOnHover: 1
+  onInteractEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 763715860}
+        m_TargetAssemblyTypeName: ChatManager, Assembly-CSharp
+        m_MethodName: Chat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  spriteRenderer: {fileID: 0}
+--- !u!61 &1907210024
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907210020}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.25, y: 1.01}
+    newSize: {x: 3.25, y: 1.01}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.25, y: 1.01}
+  m_EdgeRadius: 0
 --- !u!1 &2133858031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,8 +1695,8 @@ Transform:
   m_GameObject: {fileID: 2133858031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.514286, y: -1.93, z: 0}
-  m_LocalScale: {x: 1, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: -4.03, y: -1.69, z: 0}
+  m_LocalScale: {x: 1.7425, y: 1.2197499, z: 1.2197499}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 411556788}
