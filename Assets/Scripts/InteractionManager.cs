@@ -106,7 +106,14 @@ public class InteractionManager : MonoBehaviour
 
         // Activate the interaction
         interaction.SetActive(true);
-        
+        // TODO: Uncomment the following line once we have an SFXController component
+        /* 
+         * SFXController sfxController = interaction.GetComponent<SFXController>();
+         * if (sfxController != null)
+         * {
+         *     sfxController.PlaySound();
+         * }
+        */
         // Start new deactivation coroutine
         Coroutine deactivationCoroutine = StartCoroutine(DeactivateAfterDelay(interaction));
         activeDeactivationCoroutines[interaction] = deactivationCoroutine;
