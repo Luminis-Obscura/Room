@@ -4,7 +4,6 @@ using UnityEngine;
 public class SleepController : MonoBehaviour
 {
     private Animator animator;
-    private bool isSleeping = false;
 
     void Start()
     {
@@ -16,7 +15,6 @@ public class SleepController : MonoBehaviour
             return;
         }
     }
-
 
     public void Sleep()
     {
