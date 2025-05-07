@@ -5,10 +5,18 @@ public class ReplyController : ChatController
 {
     [SerializeField] private List<GameObject> replyObjects;
     private Animator animator;
+    private AudioSource _audioSource;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip messageSendSound;
     public override void Start()
     {
         DeactivateAllReplyObjects();
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            Debug.LogError("[ReplyController] Missing AudioSource component!");
+        }
         base.Start();
     }
 
@@ -45,11 +53,19 @@ public class ReplyController : ChatController
         if (index >= 0 && index < replyObjects.Count)
         {
             replyObjects[index].SetActive(true);
+            PlayMessageSendSound();
         }
         else
         {
             Debug.LogError("Index out of range: " + index);
         }
     }
-    
+    private void PlayMessageSendSound()
+    {
+        if (messageSendSound != null && _audioSource != null)
+        {
+            _audioSource.PlayOneShot(messageSendSound);
+        }
+    }
+
 }
