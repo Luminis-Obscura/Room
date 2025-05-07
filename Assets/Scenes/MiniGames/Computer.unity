@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 293407632}
   - component: {fileID: 293407631}
   - component: {fileID: 293407633}
+  - component: {fileID: 293407634}
   m_Layer: 0
   m_Name: Computer
   m_TagString: Untagged
@@ -504,6 +505,46 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 15.16, y: 10.4}
   m_EdgeRadius: 0
+--- !u!114 &293407634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293407630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f32e43bd0ece4aecbac9660a1726d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionText: Interact
+  isInteractable: 1
+  highlightOnHover: 1
+  onInteractEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 763715860}
+        m_TargetAssemblyTypeName: ChatManager, Assembly-CSharp
+        m_MethodName: Chat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  spriteRenderer: {fileID: 0}
+  hoverSound: {fileID: 8300000, guid: cfd9f365d67e8454980c0e29fe97d6e4, type: 3}
+  clickSound: {fileID: 8300000, guid: 16a3ec7890d8f7a4483fcfbaa870163a, type: 3}
+  audioSource: {fileID: 1190304094}
 --- !u!1 &411556787
 GameObject:
   m_ObjectHideFlags: 0

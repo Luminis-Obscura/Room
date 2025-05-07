@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Video;
 
 public enum GloveState
 {
@@ -27,6 +28,7 @@ public class GloveController : InteractiveObject
     private bool _isMouseOpen;
     private AudioSource _audioSource;           // 主 AudioSource，用于 PlayOneShot
     private AudioSource _chewingAudioSource;    // chewing 专属 AudioSource
+    private Animator animator;
     private Coroutine _chewingCoroutine;
 
     public GloveState CurrentState
@@ -36,6 +38,7 @@ public class GloveController : InteractiveObject
         {
             _health = (int)value;
             PlayHurtAudio();
+            PlayHurtAnimation();
             UpdateVisuals();
         }
     }
@@ -76,6 +79,13 @@ public class GloveController : InteractiveObject
         {
             _audioSource.volume = 0.7f;
         }
+
+        animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogError("[GloveController] Missing Animator component!");
+        }
+
 
         // 创建 chewing 专用 AudioSource
         _chewingAudioSource = gameObject.AddComponent<AudioSource>();
@@ -157,6 +167,14 @@ public class GloveController : InteractiveObject
         if (eyeSprites != null && eyeSprites.Length != 4)
         {
             Debug.LogWarning("Eye sprites array should have exactly 4 elements (one for each state)");
+        }
+    }
+
+    private void PlayHurtAnimation()
+    {
+        if (animator != null)
+        {
+            animator.Play("Knockback");
         }
     }
 

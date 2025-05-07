@@ -60,18 +60,24 @@ public class InteractiveObject : MonoBehaviour, IPointerClickHandler, IPointerEn
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
         isHovered = true;
-        if (highlightOnHover && spriteRenderer != null && CanInteract())
+        if (CanInteract())
         {
-            spriteRenderer.color = new Color(originalColor.r * 1.2f, originalColor.g * 1.2f, originalColor.b * 1.2f);
+            if (highlightOnHover && spriteRenderer != null)
+            {
+                spriteRenderer.color = new Color(originalColor.r * 1.2f, originalColor.g * 1.2f, originalColor.b * 1.2f);
+            }
+            
+            InteractiveManager.Instance.SetInteractiveCursor();
+            
+            if (GameManager.Instance.UIManager != null)
+            {
+                GameManager.Instance.UIManager.ShowInteractionText(interactionText);
+            }
+            onEnterEvent?.Invoke();
         }
-        
-        if (GameManager.Instance.UIManager != null)
-        {
-            GameManager.Instance.UIManager.ShowInteractionText(interactionText);
-        }
-        onEnterEvent?.Invoke();
     }
 
+    
     public virtual void OnPointerExit(PointerEventData eventData)
     {
         isHovered = false;
@@ -79,6 +85,8 @@ public class InteractiveObject : MonoBehaviour, IPointerClickHandler, IPointerEn
         {
             spriteRenderer.color = originalColor;
         }
+        
+        InteractiveManager.Instance.SetDefaultCursor();
         
         if (GameManager.Instance.UIManager != null)
         {
@@ -96,7 +104,7 @@ public class InteractiveObject : MonoBehaviour, IPointerClickHandler, IPointerEn
 
     public virtual bool CanInteract()
     {
-        return isInteractable;
+        return isInteractable && InteractiveManager.Instance.AreInteractionsEnabled();
     }
 
     public virtual string GetInteractionText()

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4351351972219299766}
   - component: {fileID: 9103025914982802966}
   - component: {fileID: 524153375973056449}
+  - component: {fileID: 6910268817509909391}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a2de4e5303d4535a1f1b0a93c81e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionSound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &9103025914982802966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,3 +99,18 @@ MonoBehaviour:
     onKeyReleased:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &6910268817509909391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3020633789449047017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f54d0a1e3d1ae46c0819e90e5ed51874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: aed7c796495784028960978cc1ced051, type: 3}
+  interactiveCursor: {fileID: 2800000, guid: 22df6938c6ad04edabd99f41198b84e2, type: 3}
+  cursorHotspot: {x: 0, y: 0}
