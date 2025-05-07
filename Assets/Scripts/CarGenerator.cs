@@ -12,11 +12,23 @@ public class CarGenerator : MonoBehaviour
     [SerializeField] private float maxSpawnInterval = 5f;
     [SerializeField] private float initialDelay = 2f;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip carSpawnClip; // Audio clip for car spawn sound
+
     private float _nextSpawnTime;
+    private AudioSource _audioSource;
 
     private void Start()
     {
         ValidateComponents();
+
+        // Get or add an AudioSource component
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         // Set initial spawn time after delay
         _nextSpawnTime = Time.time + initialDelay;
     }
@@ -38,7 +50,7 @@ public class CarGenerator : MonoBehaviour
         int randomIndex = Random.Range(0, carPrefabs.Count);
         GameObject carPrefab = carPrefabs[randomIndex];
         Vector3 spawnPosition = transform.position;
-        
+
         GameObject carObject = Instantiate(carPrefab, spawnPosition, Quaternion.identity);
         if (carObject.TryGetComponent<Car>(out Car car))
         {
@@ -48,6 +60,16 @@ public class CarGenerator : MonoBehaviour
         {
             Debug.LogError($"Car prefab {carPrefab.name} does not have a Car component.");
             Destroy(carObject);
+        }
+
+        PlayCarSpawnSound(); // Play the car spawn sound
+    }
+
+    private void PlayCarSpawnSound()
+    {
+        if (carSpawnClip != null && _audioSource != null)
+        {
+            _audioSource.PlayOneShot(carSpawnClip);
         }
     }
 

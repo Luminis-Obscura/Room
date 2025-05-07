@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 
 public enum GloveState
 {
-    Normal = 3, 
+    Normal = 3,
     Angry = 2,
     Sad = 1,
     Dead = 0
@@ -17,8 +17,17 @@ public class GloveController : InteractiveObject
     [SerializeField] private SpriteRenderer[] eyeSprites;  // Array of eye sprites for different states
     [SerializeField] private float mouseReopenDelay = 1f;
 
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip hurtClip;
+    [SerializeField] private AudioClip openClip;
+    [SerializeField] private AudioClip closeClip;
+    [SerializeField] private AudioClip chewingClip;
+
     private int _health = 3;
     private bool _isMouseOpen;
+    private AudioSource _audioSource;           // 主 AudioSource，用于 PlayOneShot
+    private AudioSource _chewingAudioSource;    // chewing 专属 AudioSource
+    private Coroutine _chewingCoroutine;
 
     public GloveState CurrentState
     {
@@ -26,6 +35,7 @@ public class GloveController : InteractiveObject
         private set
         {
             _health = (int)value;
+            PlayHurtAudio();
             UpdateVisuals();
         }
     }
@@ -38,6 +48,18 @@ public class GloveController : InteractiveObject
             if (_isMouseOpen != value)
             {
                 _isMouseOpen = value;
+
+                if (_isMouseOpen)
+                {
+                    PlayOpenAudio();
+                    StopChewingAudio();
+                }
+                else
+                {
+                    PlayCloseAudio();
+                    StartChewingAudio();
+                }
+
                 UpdateVisuals();
             }
         }
@@ -45,6 +67,22 @@ public class GloveController : InteractiveObject
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            Debug.LogError("[GloveController] Missing main AudioSource component!");
+        }
+        else
+        {
+            _audioSource.volume = 0.7f;
+        }
+
+        // 创建 chewing 专用 AudioSource
+        _chewingAudioSource = gameObject.AddComponent<AudioSource>();
+        _chewingAudioSource.playOnAwake = false;
+        _chewingAudioSource.volume = 0.7f;
+        _chewingAudioSource.loop = false;
+
         UpdateVisuals();
     }
 
@@ -75,13 +113,13 @@ public class GloveController : InteractiveObject
 
         _health = Mathf.Max(0, _health - damage);
         var newState = (GloveState)_health;
-        
+
         if (newState == GloveState.Dead)
         {
-            IsMouseOpen = false;  // Force mouse closed when dead
+            IsMouseOpen = false;
             Debug.Log("Glove is dead");
         }
-        
+
         CurrentState = newState;
         Debug.Log($"Glove state changed to: {CurrentState}");
     }
@@ -90,21 +128,18 @@ public class GloveController : InteractiveObject
     {
         if (collision.CompareTag("Opponent") && CurrentState != GloveState.Dead && !IsMouseOpen)
         {
-            // Example of taking damage from an opponent
             TakeDamage(1);
         }
     }
 
     private void UpdateVisuals()
     {
-        // Update mouse sprites
         if (openMouseSprite != null && closedMouseSprite != null)
         {
             openMouseSprite.enabled = IsMouseOpen;
             closedMouseSprite.enabled = !IsMouseOpen;
         }
 
-        // Update eye sprites based on current state
         if (eyeSprites != null && eyeSprites.Length > 0)
         {
             for (int i = 0; i < eyeSprites.Length; i++)
@@ -119,10 +154,70 @@ public class GloveController : InteractiveObject
 
     private void OnValidate()
     {
-        // Editor-only validation
         if (eyeSprites != null && eyeSprites.Length != 4)
         {
             Debug.LogWarning("Eye sprites array should have exactly 4 elements (one for each state)");
         }
+    }
+
+    private void PlayHurtAudio()
+    {
+        if (hurtClip != null && _audioSource != null)
+        {
+            _audioSource.PlayOneShot(hurtClip);
+        }
+    }
+
+    private void PlayOpenAudio()
+    {
+        if (openClip != null && _audioSource != null)
+        {
+            _audioSource.PlayOneShot(openClip);
+        }
+    }
+
+    private void PlayCloseAudio()
+    {
+        if (closeClip != null && _audioSource != null)
+        {
+            _audioSource.PlayOneShot(closeClip);
+        }
+    }
+
+    private void StartChewingAudio()
+    {
+        if (chewingClip != null && _chewingCoroutine == null)
+        {
+            _chewingCoroutine = StartCoroutine(PlayChewingAfterDelay());
+        }
+    }
+
+    private void StopChewingAudio()
+    {
+        if (_chewingCoroutine != null)
+        {
+            StopCoroutine(_chewingCoroutine);
+            _chewingCoroutine = null;
+        }
+
+        if (_chewingAudioSource != null && _chewingAudioSource.isPlaying)
+        {
+            _chewingAudioSource.Stop();
+        }
+    }
+
+    private IEnumerator PlayChewingAfterDelay()
+    {
+        yield return new WaitForSeconds(closeClip != null ? closeClip.length : 0.5f);
+
+        if (chewingClip != null && _chewingAudioSource != null)
+        {
+            _chewingAudioSource.clip = chewingClip;
+            _chewingAudioSource.volume = 0.7f;
+            _chewingAudioSource.loop = false;
+            _chewingAudioSource.Play();
+        }
+
+        _chewingCoroutine = null;
     }
 }

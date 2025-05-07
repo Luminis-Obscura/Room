@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ambulance
+  m_Name: Fire
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -88,7 +88,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Ambulence_01
+    path: Fire_01
     classID: 1
     script: {fileID: 0}
     flags: 16
@@ -163,7 +163,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Ambulence_02
+    path: Fire_02
     classID: 1
     script: {fileID: 0}
     flags: 16
@@ -238,7 +238,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Ambulence_03
+    path: Fire_03
     classID: 1
     script: {fileID: 0}
     flags: 16
@@ -251,7 +251,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1934842220
+      path: 4091423349
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -260,7 +260,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3931769046
+      path: 1792506831
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -269,7 +269,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2640132160
+      path: 500190041
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -370,7 +370,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Ambulence_01
+    path: Fire_01
     classID: 1
     script: {fileID: 0}
     flags: 16
@@ -445,7 +445,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Ambulence_02
+    path: Fire_02
     classID: 1
     script: {fileID: 0}
     flags: 16
@@ -520,7 +520,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Ambulence_03
+    path: Fire_03
     classID: 1
     script: {fileID: 0}
     flags: 16
